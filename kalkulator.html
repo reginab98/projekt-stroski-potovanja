@@ -1,0 +1,37 @@
+%rebase('base.html')
+% import model
+
+  <table>
+      <tr>
+          <td>
+            Stroški na osebo: {{potovanje.stroski_na_osebo()}}
+          </td>
+      </tr>
+      <tr>
+          <td>
+            Prvi prispeval : {{potovanje.stanje1()}}
+          </td>
+      </tr>
+      <tr>
+        <td>
+            Drugi prispeval : {{potovanje.stanje2()}}
+        </td>
+    </tr>
+  </table>
+
+
+
+  <form action="/potovanje/" method="post">
+    Oseba 1: <input type ="text" name="potnik1", autofocus=true>
+    Oseba 2: <input type ="text" name="potnik2", autofocus=true>
+    Prvi plačal: <input type ="text" name="placal1", autofocus=true>
+    Drugi plačal: <input type ="text" name="placal2", autofocus=true>
+    <button type="submit">Potrdi</button>
+    <button type="submit">Konec potovanja</button>
+  </form>
+
+% if potovanje == konec_potovanja():
+  <form action="/novo_potovanje/" method="post">
+    <button type="submit">Novo potovanje</button>
+</form>
+%end
